@@ -1,5 +1,4 @@
 # [C++을 이용한 자체 엔진 제작(유니티 엔진 클론코딩)](https://www.inflearn.com/course/cpp-%EC%9E%90%EC%B2%B4%EC%97%94%EC%A7%84-%EC%A0%9C%EC%9E%91/dashboard)
-C++을 이용해 유니티 게임엔진과 비슷하게 게임엔진을 제작하는 과정입니다. 내부적 코드를 유추하는 방식으로 제작되었으며 이를 통해 유니티엔진의 내부 원리에 대해서 생각해 볼 수 있습니다.
 
 <p align="center">
   <img src="https://github.com/user-attachments/assets/c473be7f-f1f9-4108-8cce-e1b82b157fe7", width="20%">
