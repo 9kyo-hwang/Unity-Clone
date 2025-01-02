@@ -1,13 +1,11 @@
 #include "Application.h"
+#include "GameObject.h"
 
 namespace Unity
 {
 	Application::Application()
 		: _hWnd(nullptr)
 		, _hdc(nullptr)
-		, _speed(0.f)
-		, _x(0.f)
-		, _y(0.f)
 	{
 		
 	}
@@ -21,6 +19,7 @@ namespace Unity
 	{
 		_hWnd = hWnd;
 		_hdc = GetDC(hWnd);
+		_player.Awake();
 	}
 
 	void Application::Start()
@@ -32,33 +31,17 @@ namespace Unity
 
 	void Application::Update()
 	{
-		_speed += 0.01f;
-		if (GetAsyncKeyState(VK_LEFT) & 0x8000)
-		{
-			_x -= 0.01f;
-		}
-		if (GetAsyncKeyState(VK_RIGHT) & 0x8000)
-		{
-			_x += 0.01f;
-		}
-		if (GetAsyncKeyState(VK_UP) & 0x8000)
-		{
-			_y -= 0.01f;
-		}
-		if (GetAsyncKeyState(VK_DOWN) & 0x8000)
-		{
-			_y += 0.01f;
-		}
+		_player.Update();
 	}
 
 	void Application::LateUpdate()
 	{
-		
+		_player.LateUpdate();
 	}
 
 	void Application::Render()
 	{
-		Rectangle(_hdc, 100 + _x, 100 + _y, 200 + _x, 200 + _y);
+		_player.Render(_hdc);
 	}
 
 }

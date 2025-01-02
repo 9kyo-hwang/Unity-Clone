@@ -1,5 +1,6 @@
 #pragma once
 #include "CommonInclude.h"
+#include "GameObject.h"
 
 namespace Unity
 {
@@ -18,8 +19,8 @@ namespace Unity
 	private:
 		HWND _hWnd;
 		HDC _hdc;
-		float _speed;
-		float _x;
-		float _y;
+
+		// 일종의 플레이어같은...
+		GameObject _player;
 	};
 }
