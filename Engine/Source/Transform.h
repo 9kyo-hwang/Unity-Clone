@@ -3,8 +3,6 @@
 
 namespace Unity
 {
-    using Vector2Int = std::pair<int, int>;
-
     class Transform : public Component
     {
     public:
@@ -16,10 +14,11 @@ namespace Unity
         void LateUpdate() override;
         void Render(HDC hdc) override;
 
-        Vector2Int GetPosition() const { return _position; }
-        void SetPosition(const int x, const int y) { _position.first = x; _position.second = y; }
+        Vector2 GetPosition() const { return _position; }
+        void SetPosition(const float x, const float y) { _position.x = x; _position.y = y; }
+        void SetPosition(const Vector2& other) { _position = other; }
 
     private:
-        Vector2Int _position;
+        Vector2 _position;
     };
 }

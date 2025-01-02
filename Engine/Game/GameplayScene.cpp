@@ -20,40 +20,17 @@ namespace Unity
 	void GameplayScene::Awake()
 	{
 		{
-			Player* player = new Player();
+			Player* background = new Player();
 
-			Transform* transform = player->AddComponent<Transform>();
-			transform->SetPosition(800, 450);
+			Transform* transform = background->AddComponent<Transform>();
+			transform->SetPosition(0, 0);
 			transform->SetName(L"TR");
 
-			SpriteRenderer* renderer = player->AddComponent<SpriteRenderer>();
+			SpriteRenderer* renderer = background->AddComponent<SpriteRenderer>();
 			renderer->SetName(L"SR");
+			renderer->Load(L"E:\\Github\\Unity-Clone\\Engine\\Resources\\CloudOcean.png");
 
-			AddGameObject(player);
-		}
-		{
-			Player* player = new Player();
-
-			Transform* transform = player->AddComponent<Transform>();
-			transform->SetPosition(300, 450);
-			transform->SetName(L"TR");
-
-			SpriteRenderer* renderer = player->AddComponent<SpriteRenderer>();
-			renderer->SetName(L"SR");
-
-			AddGameObject(player);
-		}
-		{
-			Player* player = new Player();
-
-			Transform* transform = player->AddComponent<Transform>();
-			transform->SetPosition(100, 650);
-			transform->SetName(L"TR");
-
-			SpriteRenderer* renderer = player->AddComponent<SpriteRenderer>();
-			renderer->SetName(L"SR");
-
-			AddGameObject(player);
+			AddGameObject(background);
 		}
 	}
 
