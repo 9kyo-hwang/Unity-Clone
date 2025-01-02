@@ -18,9 +18,14 @@ namespace Unity
 
 	private:
 		HWND _hWnd;
-		HDC _hdc;
+		HDC _hFrontDC;
 
 		// 일종의 플레이어같은...
 		GameObject _player;
+
+	private:  // for Back Buffering
+		HDC _hBackDC;
+		HBITMAP _hBackBmp;
+		RECT _rect;
 	};
 }
