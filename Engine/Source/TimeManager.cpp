@@ -2,7 +2,7 @@
 
 namespace Unity
 {
-	Time::Time()
+	TimeManager::TimeManager()
 		: _frequency(0)
 		, _prevCount(0)
 		, _deltaTime(0.f)
@@ -10,13 +10,13 @@ namespace Unity
 		
 	}
 
-	void Time::Awake()
+	void TimeManager::Awake()
 	{
 		::QueryPerformanceFrequency(reinterpret_cast<LARGE_INTEGER*>(OUT &_frequency));
 		::QueryPerformanceCounter(reinterpret_cast<LARGE_INTEGER*>(OUT &_prevCount));
 	}
 
-	void Time::Update()
+	void TimeManager::Update()
 	{
 		uint64 currentCount;
 		::QueryPerformanceCounter(reinterpret_cast<LARGE_INTEGER*>(OUT &currentCount));
@@ -25,7 +25,7 @@ namespace Unity
 		_prevCount = currentCount;
 	}
 
-	void Time::Render(HDC hdc)
+	void TimeManager::Render(HDC hdc)
 	{
 		// legacy
 		//wchar_t str[50] = L"";

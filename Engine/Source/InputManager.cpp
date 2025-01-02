@@ -2,12 +2,12 @@
 
 namespace Unity
 {
-	void Input::Awake()
+	void InputManager::Awake()
 	{
 		_states.resize(KeyCount, KeyboardState::None);
 	}
 
-	void Input::Update()
+	void InputManager::Update()
 	{
 		BYTE ascii[KeyCount]{};
 		if (!::GetKeyboardState(ascii))

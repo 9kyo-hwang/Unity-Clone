@@ -29,21 +29,21 @@ namespace Unity
 
 	void GameObject::Update()
 	{
-		if (Input::Instance().GetKey(KeyCode::LeftArrow))
+		if (InputManager::Instance().GetKey(KeyCode::LeftArrow))
 		{
-			_x -= _speed * Time::Instance().DeltaTime();
+			_x -= _speed * TimeManager::Instance().DeltaTime();
 		}
-		if (Input::Instance().GetKey(KeyCode::RightArrow))
+		if (InputManager::Instance().GetKey(KeyCode::RightArrow))
 		{
-			_x += _speed * Time::Instance().DeltaTime();
+			_x += _speed * TimeManager::Instance().DeltaTime();
 		}
-		if (Input::Instance().GetKey(KeyCode::UpArrow))
+		if (InputManager::Instance().GetKey(KeyCode::UpArrow))
 		{
-			_y -= _speed * Time::Instance().DeltaTime();
+			_y -= _speed * TimeManager::Instance().DeltaTime();
 		}
-		if (Input::Instance().GetKey(KeyCode::DownArrow))
+		if (InputManager::Instance().GetKey(KeyCode::DownArrow))
 		{
-			_y += _speed * Time::Instance().DeltaTime();
+			_y += _speed * TimeManager::Instance().DeltaTime();
 		}
 	}
 
@@ -56,6 +56,6 @@ namespace Unity
 	{
 		assert(hdc != nullptr);
 
-		Rectangle(hdc, 100 + _x, 100 + _y, 200 + _x, 200 + _y);
+		Ellipse(hdc, _x, _y, 100 + _x, 100 + _y);
 	}
 }

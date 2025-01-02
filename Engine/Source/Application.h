@@ -1,6 +1,5 @@
 #pragma once
 #include "CommonInclude.h"
-#include "GameObject.h"
 
 namespace Unity
 {
@@ -19,9 +18,6 @@ namespace Unity
 	private:
 		HWND _hWnd;
 		HDC _hFrontDC;
-
-		// 일종의 플레이어같은...
-		GameObject _player;
 
 	private:  // for Back Buffering
 		HDC _hBackDC;

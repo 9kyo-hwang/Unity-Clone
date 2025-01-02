@@ -1,7 +1,7 @@
 #include "Application.h"
-#include "GameObject.h"
 #include "InputManager.h"
 #include "TimeManager.h"
+#include "SceneManager.h"
 
 namespace Unity
 {
@@ -10,7 +10,7 @@ namespace Unity
 		, _hFrontDC(nullptr)
 		, _hBackDC(nullptr)
 		, _hBackBmp(nullptr)
-		, _rect({})
+		, _rect{}
 	{
 	}
 
@@ -27,13 +27,11 @@ namespace Unity
 		::GetClientRect(_hWnd, &_rect);
 		_hBackDC = ::CreateCompatibleDC(_hFrontDC);
 		_hBackBmp = ::CreateCompatibleBitmap(_hFrontDC, _rect.right, _rect.bottom);
-		HBITMAP hFrontBmp = static_cast<HBITMAP>(::SelectObject(_hBackDC, _hBackBmp));
-		::DeleteObject(hFrontBmp);
+		::DeleteObject(::SelectObject(_hBackDC, _hBackBmp));  // delete Front Bitmap
 
-		_player.Awake();
-
-		Input::Instance().Awake();
-		Time::Instance().Awake();
+		InputManager::Instance().Awake();
+		TimeManager::Instance().Awake();
+		SceneManager::Instance().Awake();
 	}
 
 	void Application::Start()
@@ -45,22 +43,20 @@ namespace Unity
 
 	void Application::Update()
 	{
-		Input::Instance().Update();
-		Time::Instance().Update();
-
-		_player.Update();
+		InputManager::Instance().Update();
+		TimeManager::Instance().Update();
+		SceneManager::Instance().Update();
 	}
 
 	void Application::LateUpdate()
 	{
-		_player.LateUpdate();
+
 	}
 
 	void Application::Render()
 	{
-		Time::Instance().Render(_hBackDC);
-
-		_player.Render(_hBackDC);
+		TimeManager::Instance().Render(_hBackDC);
+		SceneManager::Instance().Render(_hBackDC);
 
 		::BitBlt(_hFrontDC, 0, 0, _rect.right, _rect.bottom, _hBackDC, 0, 0, SRCCOPY);
 		::PatBlt(_hBackDC, 0, 0, _rect.right, _rect.bottom, WHITENESS);

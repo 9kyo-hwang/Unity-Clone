@@ -6,5 +6,7 @@
 #include <format>
 #include <vector>
 #include <string>
+#include <map>
+#include <unordered_map>
 
 #include "Types.h"

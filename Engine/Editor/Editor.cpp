@@ -4,6 +4,7 @@
 #include "framework.h"
 #include "Editor.h"
 
+#include "../Game/LoadScenes.h"
 #include "../Source/Application.h"
 
 #define MAX_LOADSTRING 100
@@ -134,6 +135,7 @@ BOOL InitInstance(HINSTANCE hInstance, int nCmdShow)
    ShowWindow(hWnd, nCmdShow);
    UpdateWindow(hWnd);
    application.Awake(hWnd);
+   Unity::LoadScenes();
 
    return TRUE;
 }

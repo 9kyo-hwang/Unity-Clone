@@ -35,10 +35,10 @@ namespace Unity
 
 	constexpr int32 KeyCount = static_cast<int32>(UINT8_MAX) + 1;
 
-	class Input final : public Singleton<Input>
+	class InputManager final : public Singleton<InputManager>
 	{
 	public:
-		~Input() override {}
+		~InputManager() override {}
 
 		void Awake();
 		void Update();
