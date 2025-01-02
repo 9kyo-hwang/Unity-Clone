@@ -3,11 +3,11 @@
 
 namespace Unity
 {
-	class MetaData
+	class Object
 	{
 	public:
-		MetaData();
-		virtual ~MetaData();
+		Object();
+		virtual ~Object();
 
 		std::wstring& GetName() { return _name; }
 		void SetName(const std::wstring& name) { _name = name; }

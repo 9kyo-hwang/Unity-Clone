@@ -5,57 +5,50 @@
 namespace Unity
 {
 	GameObject::GameObject()
-		: _x(0.f)
-		, _y(0.f)
-		, _speed(500.f)
 	{
 		
 	}
 
 	GameObject::~GameObject()
 	{
-		
+		for (Component* component : _components)
+		{
+			delete component;
+			component = nullptr;
+		}
 	}
 
 	void GameObject::Awake()
 	{
-		
-	}
-
-	void GameObject::Start()
-	{
-		
+		for (Component* component : _components)
+		{
+			component->Awake();
+		}
 	}
 
 	void GameObject::Update()
 	{
-		if (InputManager::Instance().GetKey(KeyCode::LeftArrow))
+		for (Component* component : _components)
 		{
-			_x -= _speed * TimeManager::Instance().DeltaTime();
-		}
-		if (InputManager::Instance().GetKey(KeyCode::RightArrow))
-		{
-			_x += _speed * TimeManager::Instance().DeltaTime();
-		}
-		if (InputManager::Instance().GetKey(KeyCode::UpArrow))
-		{
-			_y -= _speed * TimeManager::Instance().DeltaTime();
-		}
-		if (InputManager::Instance().GetKey(KeyCode::DownArrow))
-		{
-			_y += _speed * TimeManager::Instance().DeltaTime();
+			component->Update();
 		}
 	}
 
 	void GameObject::LateUpdate()
 	{
-		
+		for (Component* component : _components)
+		{
+			component->LateUpdate();
+		}
 	}
 
 	void GameObject::Render(HDC hdc)
 	{
 		assert(hdc != nullptr);
 
-		Ellipse(hdc, _x, _y, 100 + _x, 100 + _y);
+		for (Component* component : _components)
+		{
+			component->Render(hdc);
+		}
 	}
 }
