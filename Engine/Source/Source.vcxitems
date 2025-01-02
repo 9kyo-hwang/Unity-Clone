@@ -16,22 +16,28 @@
   <ItemGroup>
     <ClInclude Include="$(MSBuildThisFileDirectory)Application.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)CommonInclude.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)Component.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)GameObject.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)InputManager.h" />
-    <ClInclude Include="$(MSBuildThisFileDirectory)MetaData.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)Object.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)Scene.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)SceneManager.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)Singleton.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)SpriteRenderer.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)TimeManager.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)Transform.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)Types.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="$(MSBuildThisFileDirectory)Application.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)Component.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)GameObject.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)InputManager.cpp" />
-    <ClCompile Include="$(MSBuildThisFileDirectory)MetaData.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)Object.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)Scene.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)SceneManager.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)SpriteRenderer.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)TimeManager.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)Transform.cpp" />
   </ItemGroup>
 </Project>

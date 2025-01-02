@@ -1,10 +1,10 @@
 #pragma once
 #include "CommonInclude.h"
-#include "MetaData.h"
+#include "Object.h"
 
 namespace Unity
 {
-	class Scene : public MetaData
+	class Scene : public Object
 	{
 	public:
 		Scene();

@@ -1,5 +1,6 @@
 #pragma once
 #include "CommonInclude.h"
+#include "Component.h"
 
 namespace Unity
 {
@@ -10,18 +11,34 @@ namespace Unity
 		virtual ~GameObject();
 
 		virtual void Awake();
-		virtual void Start();
 		virtual void Update();
 		virtual void LateUpdate();
 		virtual void Render(HDC hdc);
 
-	public:
-		const std::pair<float, float>& GetPosition() const { return { _x, _y }; }
-		void SetPosition(float x, float y) { _x = x; _y = y; }
+		template<typename ComponentType>
+		ComponentType* AddComponent()
+		{
+			ComponentType* component = new ComponentType();
+			component->SetParent(this);
+			_components.push_back(component);
+			return component;
+		}
+
+		template<typename ComponentType>
+		ComponentType* GetComponent()
+		{
+			for (Component* component : _components)
+			{
+				if (ComponentType* target = dynamic_cast<ComponentType*>(component))
+				{
+					return target;
+				}
+			}
+
+			return nullptr;
+		}
 
 	private:
-		float _x;
-		float _y;
-		float _speed;
+		std::vector<Component*> _components;
 	};
 }
