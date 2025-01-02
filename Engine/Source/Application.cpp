@@ -1,5 +1,6 @@
 #include "Application.h"
 #include "GameObject.h"
+#include "Input.h"
 
 namespace Unity
 {
@@ -20,6 +21,7 @@ namespace Unity
 		_hWnd = hWnd;
 		_hdc = GetDC(hWnd);
 		_player.Awake();
+		Input::Instance()->Awake();
 	}
 
 	void Application::Start()
@@ -31,6 +33,7 @@ namespace Unity
 
 	void Application::Update()
 	{
+		Input::Instance()->Update();
 		_player.Update();
 	}
 
