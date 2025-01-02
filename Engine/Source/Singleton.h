@@ -13,10 +13,10 @@ namespace Unity
 		Singleton& operator=(const Singleton&) = delete;
 		Singleton& operator=(Singleton&&) = delete;
 
-		static T* Instance()
+		static T& Instance()
 		{
 			static T instance;
-			return &instance;
+			return instance;
 		}
 	};
 }

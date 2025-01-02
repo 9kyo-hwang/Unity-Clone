@@ -1,12 +1,13 @@
 #include "GameObject.h"
-#include "Input.h"
+#include "InputManager.h"
+#include "TimeManager.h"
 
 namespace Unity
 {
 	GameObject::GameObject()
 		: _x(0.f)
 		, _y(0.f)
-		, _speed(0.f)
+		, _speed(500.f)
 	{
 		
 	}
@@ -28,21 +29,21 @@ namespace Unity
 
 	void GameObject::Update()
 	{
-		if (Input::Instance()->GetKey(KeyCode::LeftArrow))
+		if (Input::Instance().GetKey(KeyCode::LeftArrow))
 		{
-			_x -= 0.01f;
+			_x -= _speed * Time::Instance().DeltaTime();
 		}
-		if (Input::Instance()->GetKey(KeyCode::RightArrow))
+		if (Input::Instance().GetKey(KeyCode::RightArrow))
 		{
-			_x += 0.01f;
+			_x += _speed * Time::Instance().DeltaTime();
 		}
-		if (Input::Instance()->GetKey(KeyCode::UpArrow))
+		if (Input::Instance().GetKey(KeyCode::UpArrow))
 		{
-			_y -= 0.01f;
+			_y -= _speed * Time::Instance().DeltaTime();
 		}
-		if (Input::Instance()->GetKey(KeyCode::DownArrow))
+		if (Input::Instance().GetKey(KeyCode::DownArrow))
 		{
-			_y += 0.01f;
+			_y += _speed * Time::Instance().DeltaTime();
 		}
 	}
 
