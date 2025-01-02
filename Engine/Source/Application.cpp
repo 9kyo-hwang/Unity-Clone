@@ -1,6 +1,7 @@
 #include "Application.h"
 #include "GameObject.h"
-#include "Input.h"
+#include "InputManager.h"
+#include "TimeManager.h"
 
 namespace Unity
 {
@@ -21,7 +22,9 @@ namespace Unity
 		_hWnd = hWnd;
 		_hdc = GetDC(hWnd);
 		_player.Awake();
-		Input::Instance()->Awake();
+
+		Input::Instance().Awake();
+		Time::Instance().Awake();
 	}
 
 	void Application::Start()
@@ -33,7 +36,9 @@ namespace Unity
 
 	void Application::Update()
 	{
-		Input::Instance()->Update();
+		Input::Instance().Update();
+		Time::Instance().Update();
+
 		_player.Update();
 	}
 
@@ -44,7 +49,8 @@ namespace Unity
 
 	void Application::Render()
 	{
+		Time::Instance().Render(_hdc);
+
 		_player.Render(_hdc);
 	}
-
 }
