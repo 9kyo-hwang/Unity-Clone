@@ -6,6 +6,9 @@
 namespace Unity
 {
 	SpriteRenderer::SpriteRenderer()
+		: _image(nullptr)
+		, _width(0)
+		, _height(0)
 	{
 		
 	}
@@ -32,19 +35,17 @@ namespace Unity
 
 	void SpriteRenderer::Render(HDC hdc)
 	{
-		HBRUSH blueBrush = CreateSolidBrush(RGB(255, 0, 255));
-		HBRUSH oldBrush  = (HBRUSH)SelectObject(hdc, blueBrush);
-
-		HPEN redPen = CreatePen(PS_SOLID, 2, RGB(rand() % 255, rand() % 255, rand() % 255));
-		HPEN oldPen = (HPEN)SelectObject(hdc, redPen);
-		SelectObject(hdc, oldPen);
-
 		Transform* transform = GetParent()->GetComponent<Transform>();
 		const auto& [x, y] = transform->GetPosition();
-		Ellipse(hdc, x, y, 100 + x, 100 + y);
 
-		SelectObject(hdc, oldBrush);
-		DeleteObject(blueBrush);
-		DeleteObject(redPen);
+		Gdiplus::Graphics graphics(hdc);
+		graphics.DrawImage(_image, Gdiplus::Rect(x, y, _width, _height));
+	}
+
+	void SpriteRenderer::Load(const std::wstring& path)
+	{
+		_image = Gdiplus::Image::FromFile(path.c_str());
+		_width = _image->GetWidth();
+		_height = _image->GetHeight();
 	}
 }

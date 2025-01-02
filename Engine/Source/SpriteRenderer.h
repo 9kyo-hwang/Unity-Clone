@@ -14,6 +14,11 @@ namespace Unity
 		void LateUpdate() override;
 		void Render(HDC hdc) override;
 
+		void Load(const std::wstring& path);
+
 	private:
+		Gdiplus::Image* _image;
+		uint32 _width;
+		uint32 _height;
 	};
 }
