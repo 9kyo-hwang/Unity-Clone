@@ -5,11 +5,11 @@
 
 namespace Unity
 {
-	class Time : public Singleton<Time>
+	class TimeManager : public Singleton<TimeManager>
 	{
 	public:
-		Time();
-		~Time() override {}
+		TimeManager();
+		~TimeManager() override {}
 
 		void Awake();
 		void Update();
