@@ -4,7 +4,7 @@ namespace Unity
 {
 	Transform::Transform()
 	{
-		
+		name = L"TR";
 	}
 
 	Transform::~Transform()

@@ -4,20 +4,31 @@
     <Filter Include="Scenes">
       <UniqueIdentifier>{034fc06f-0aa7-4c4d-a2f6-231f8c55b7d1}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Objects">
+      <UniqueIdentifier>{8550ca09-10bd-46bd-9cd7-ac72c56dcb45}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="LoadScenes.h">
-      <Filter>Scenes</Filter>
-    </ClInclude>
     <ClInclude Include="GameplayScene.h">
       <Filter>Scenes</Filter>
     </ClInclude>
-    <ClInclude Include="Player.h" />
+    <ClInclude Include="TitleScene.h">
+      <Filter>Scenes</Filter>
+    </ClInclude>
+    <ClInclude Include="Player.h">
+      <Filter>Objects</Filter>
+    </ClInclude>
+    <ClInclude Include="LoadScenes.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="GameplayScene.cpp">
       <Filter>Scenes</Filter>
     </ClCompile>
-    <ClCompile Include="Player.cpp" />
+    <ClCompile Include="TitleScene.cpp">
+      <Filter>Scenes</Filter>
+    </ClCompile>
+    <ClCompile Include="Player.cpp">
+      <Filter>Objects</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>

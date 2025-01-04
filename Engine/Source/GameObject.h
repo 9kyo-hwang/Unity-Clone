@@ -1,14 +1,16 @@
 #pragma once
 #include "CommonInclude.h"
-#include "Component.h"
+#include "Entity.h"
 
 namespace Unity
 {
-	class GameObject
+	class Component;
+
+	class GameObject : public Entity
 	{
 	public:
 		GameObject();
-		virtual ~GameObject();
+		~GameObject() override;
 
 		virtual void Awake();
 		virtual void Update();
@@ -20,6 +22,8 @@ namespace Unity
 		{
 			ComponentType* component = new ComponentType();
 			component->SetParent(this);
+			component->Awake();
+
 			_components.push_back(component);
 			return component;
 		}

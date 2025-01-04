@@ -1,10 +1,14 @@
 #pragma once
 #include "CommonInclude.h"
-#include "Object.h"
+#include "Entity.h"
 
 namespace Unity
 {
-	class Scene : public Object
+	class GameObject;
+	class Layer;
+	enum class LayerTypes;
+
+	class Scene : public Entity
 	{
 	public:
 		Scene();
@@ -15,9 +19,13 @@ namespace Unity
 		virtual void LateUpdate();
 		virtual void Render(HDC hdc);
 
-		void AddGameObject(class GameObject* gameObject);
+		virtual void OnEnter();
+		virtual void OnExit();
+
+		void AddGameObject(GameObject* gameObject, LayerTypes type) const;
+		Layer* GetLayer(LayerTypes type) const { return _layers[static_cast<int32>(type)]; }
 
 	private:
-		std::vector<class GameObject*> _gameObjects;
+		std::vector<Layer*> _layers;
 	};
 }

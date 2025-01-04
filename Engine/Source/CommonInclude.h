@@ -11,6 +11,7 @@
 #include <unordered_map>
 
 #include "Types.h"
+#include "Enums.h"
 
 #include <mmsystem.h>
 #include <dinput.h>

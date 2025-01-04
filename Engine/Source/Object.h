@@ -1,18 +1,38 @@
 #pragma once
-#include "CommonInclude.h"
+#include "Enums.h"
+#include "Layer.h"
+#include "Scene.h"
+#include "SceneManager.h"
+#include "Singleton.h"
+#include "Transform.h"
 
 namespace Unity
 {
-	class Object
+	class Object : public Singleton<Object>
 	{
 	public:
-		Object();
-		virtual ~Object();
+		template<typename T>
+		T* Instantiate(LayerTypes type)
+		{
+			T* gameObject = new T();
+			Scene* activeScene = SceneManager::Instance().GetActiveScene();
+			Layer* layer = activeScene->GetLayer(type);
+			layer->AddGameObject(gameObject);
+			return gameObject;
+		}
 
-		std::wstring& GetName() { return _name; }
-		void SetName(const std::wstring& name) { _name = name; }
+		template<typename T>
+		T* Instantiate(LayerTypes type, Vector2 position)
+		{
+			T* gameObject = Instantiate<T>(type);
+			gameObject->GetComponent<Transform>()->SetPosition(position);
+			return gameObject;
+		}
 
-	private:
-		std::wstring _name;
+		template<typename T>
+		T* Instantiate(LayerTypes type, float x, float y)
+		{
+			return Instantiate<T>(type, Vector2(x, y));
+		}
 	};
 }

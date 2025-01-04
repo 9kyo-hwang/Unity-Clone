@@ -1,12 +1,12 @@
 #include "GameObject.h"
-#include "InputManager.h"
-#include "TimeManager.h"
+#include "Transform.h"
 
 namespace Unity
 {
 	GameObject::GameObject()
 	{
-		
+		// 모든 게임 오브젝트는 Transform을 들고 있어야 함
+		AddComponent<Transform>();
 	}
 
 	GameObject::~GameObject()
