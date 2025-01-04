@@ -3,13 +3,12 @@
 
 namespace Unity
 {
-	class GameplayScene : public Scene
+	class TitleScene : public Scene
 	{
 		using Super = Scene;
-
 	public:
-		GameplayScene();
-		~GameplayScene() override;
+		TitleScene();
+		~TitleScene() override;
 
 		void Awake() override;
 		void Update() override;
@@ -18,8 +17,5 @@ namespace Unity
 
 		void OnEnter() override;
 		void OnExit() override;
-
-	private:
-		class Player* background;
 	};
 }

@@ -1,10 +1,11 @@
 #include "Scene.h"
 #include "GameObject.h"
+#include "Layer.h"
 
 namespace Unity
 {
 	Scene::Scene()
-		: _gameObjects{}
+		: _layers(static_cast<size_t>(LayerTypes::Max), new Layer())
 	{
 		
 	}
@@ -16,38 +17,63 @@ namespace Unity
 
 	void Scene::Awake()
 	{
-		for (GameObject* gameObject : _gameObjects)
+		for (Layer* layer : _layers)
 		{
-			gameObject->Awake();
+			if (layer)
+			{
+				layer->Awake();
+			}
 		}
 	}
 
 	void Scene::Update()
 	{
-		for (GameObject* gameObject : _gameObjects)
+		for (Layer* layer : _layers)
 		{
-			gameObject->Update();
+			if (layer)
+			{
+				layer->Update();
+			}
 		}
 	}
 
 	void Scene::LateUpdate()
 	{
-		for (GameObject* gameObject : _gameObjects)
+		for (Layer* layer : _layers)
 		{
-			gameObject->LateUpdate();
+			if (layer)
+			{
+				layer->LateUpdate();
+			}
 		}
 	}
 
 	void Scene::Render(HDC hdc)
 	{
-		for (GameObject* gameObject : _gameObjects)
+		for (Layer* layer : _layers)
 		{
-			gameObject->Render(hdc);
+			if (layer)
+			{
+				layer->Render(hdc);
+			}
 		}
 	}
 
-	void Scene::AddGameObject(GameObject* gameObject)
+	void Scene::OnEnter()
 	{
-		_gameObjects.push_back(gameObject);
+
+	}
+
+	void Scene::OnExit()
+	{
+
+	}
+
+	void Scene::AddGameObject(GameObject* gameObject, LayerTypes type) const
+	{
+		if (gameObject)
+		{
+			_layers[(uint32)type]->AddGameObject(gameObject);
+		}
 	}
 }

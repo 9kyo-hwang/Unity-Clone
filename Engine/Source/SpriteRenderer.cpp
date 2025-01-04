@@ -1,5 +1,4 @@
 #include "SpriteRenderer.h"
-
 #include "GameObject.h"
 #include "Transform.h"
 
@@ -10,7 +9,7 @@ namespace Unity
 		, _width(0)
 		, _height(0)
 	{
-		
+		name = L"SR";
 	}
 
 	SpriteRenderer::~SpriteRenderer()

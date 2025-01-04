@@ -50,7 +50,7 @@ namespace Unity
 
 	void Application::LateUpdate()
 	{
-
+		SceneManager::Instance().LateUpdate();
 	}
 
 	void Application::Render()

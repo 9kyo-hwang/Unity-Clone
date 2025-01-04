@@ -1,28 +1,28 @@
 #pragma once
+#include "CommonInclude.h"
 #include "Entity.h"
 
 namespace Unity
 {
 	class GameObject;
 
-	class Component : public Entity
+	class Layer : public Entity
 	{
 		using Super = Entity;
 
 	public:
-		Component();
-		~Component() override;
+		Layer();
+		~Layer() override;
 
 		virtual void Awake();
 		virtual void Update();
 		virtual void LateUpdate();
 		virtual void Render(HDC hdc);
 
-		GameObject* GetParent() const { return _parent; }
-		void SetParent(GameObject* parent) { _parent = parent; }
+		void AddGameObject(GameObject* gameObject);
 
 	private:
-		GameObject* _parent = nullptr;
+		LayerTypes _type;
+		std::vector<GameObject*> _gameObjects;
 	};
-
 }

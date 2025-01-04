@@ -5,7 +5,6 @@
 namespace Unity
 {
 	class Scene;
-
 	class SceneManager : public Singleton<SceneManager>
 	{
 	public:
@@ -13,21 +12,17 @@ namespace Unity
 		Scene* CreateScene(const std::wstring& name)
 		{
 			SceneType* scene = new SceneType();
-			scene->SetName(name);
+			scene->name = name;
+
+			_activeScene = scene;  // 이 과정을 해주지 않으면 Object Instantiate에서 Scene nullptr exception
+			_scenes[name] = scene;
+
 			scene->Awake();
-
-			return _scenes[name] = scene;
+			return scene;
 		}
 
-		Scene* LoadScene(const std::wstring& name)
-		{
-			if (_scenes.contains(name))
-			{
-				return _activeScene = _scenes[name];
-			}
-
-			return nullptr;
-		}
+		Scene* LoadScene(const std::wstring& name);
+		Scene* GetActiveScene() const { return _activeScene; }
 
 	public:
 		void Awake();
